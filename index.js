@@ -1,7 +1,7 @@
 let dodger = document.getElementById("dodger");
 let dodgerWidth = dodger.scrollWidth;
 let dodgerHeight = dodger.scrollHeight;
-dodger.style.bottom = "180px"
+dodger.style.bottom = "180px";
 dodger.style.backgroundColor = "#FF69B4";
 
 function moveDodgerLeft(modInput) {
@@ -61,26 +61,17 @@ function moveDodgerUp(modInput) {
 }
 
 let keysPressed = {};
+let movements = ['ArrowLeft', 'ArrowRight', 'ArrowDown', 'ArrowUp', 'a'];
+    
 
 document.addEventListener("keydown", function(e) {
-    if (e.key === "ArrowLeft") {
-        keysPressed[e.key] = true;
-    }
-    if (e.key === "ArrowRight") {
-        keysPressed[e.key] = true;
-    }
-    if (e.key === "ArrowDown") {
-        keysPressed[e.key] = true;
-    }
-    if (e.key === "ArrowUp") {
-        keysPressed[e.key] = true;
-    }
-    if (e.key === "a"){
-        keysPressed[e.key] = true;
-    }
-
+    
+    movements.forEach(movement => {
+        if (e.key === movement) {keysPressed[e.key] = true;}
+    })
+    
     dashValue = 20;
-
+    
     if (keysPressed['ArrowLeft'] && !keysPressed['ArrowRight'] && !keysPressed['ArrowUp'] && !keysPressed['ArrowDown']){
         if (keysPressed['a']){
             moveDodgerLeft(dashValue);

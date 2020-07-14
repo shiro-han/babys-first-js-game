@@ -23,6 +23,10 @@
   top: 4rem;
 }
 
+h1, h3 {
+  text-align: center;
+}
+
 .rock {
   width: 20px;
   height: 20px;
