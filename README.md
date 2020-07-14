@@ -1,1 +1,1 @@
-Baby's First JS Game - built off of Flatiron's Rock Catcher Lab
+# Baby's First JS Game - built off of Flatiron's Rock Dodger Lab
