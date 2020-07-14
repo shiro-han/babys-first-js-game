@@ -4,6 +4,10 @@ let dodgerHeight = dodger.scrollHeight;
 dodger.style.bottom = "180px";
 dodger.style.backgroundColor = "#FF69B4";
 
+function moveDodger(direction, modInput=0){
+    
+}
+
 function moveDodgerLeft(modInput) {
     if (modInput === undefined){
         modInput = 0;
@@ -71,7 +75,7 @@ document.addEventListener("keydown", function(e) {
     })
     
     dashValue = 20;
-    
+
     if (keysPressed['ArrowLeft'] && !keysPressed['ArrowRight'] && !keysPressed['ArrowUp'] && !keysPressed['ArrowDown']){
         if (keysPressed['a']){
             moveDodgerLeft(dashValue);
