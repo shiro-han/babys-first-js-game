@@ -1,5 +1,5 @@
 # Baby's First JS Game
-
+Play Online Here: https://shiro-han.github.io/babys-first-js-game/
 
 ## To Do
 * √Refactor Code
