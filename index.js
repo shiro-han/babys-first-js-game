@@ -6,9 +6,9 @@ let dodgerHeight = dodger.scrollHeight;
 dodger.style.bottom = "180px";
 dodger.style.backgroundColor = "#FF69B4";
 
-function moveDodger(direction, dash=false){
+function moveDodger(direction, run=false){
     let movementValue; let leftNumbers; let left; let bottomNumbers; let bottom;
-    if (dash === false) {movementValue = 3}
+    if (run === false) {movementValue = 3}
     else {movementValue = 6;}
     
 
@@ -52,16 +52,19 @@ let controls = {
     right: 'ArrowRight',
     down: 'ArrowDown',
     up: 'ArrowUp',
-    dash: 'a'
+    run: 'a'
 };
 
 function createMovement(myHash) {
     let inputArray = Object.keys(myHash);
+    let run = false;
+    if (inputArray.includes(controls['run'])) {run = true;}
+
     inputArray.forEach(input => {
-        if (input === controls['left']) {moveDodger('left')}
-        if (input === controls['right']) {moveDodger('right')}
-        if (input === controls['up']) {moveDodger('up')}
-        if (input === controls['down']) {moveDodger('down')}
+        if (input === controls['left']) {moveDodger('left', run)}
+        if (input === controls['right']) {moveDodger('right', run)}
+        if (input === controls['up']) {moveDodger('up', run)}
+        if (input === controls['down']) {moveDodger('down', run)}
     })
 }
 
