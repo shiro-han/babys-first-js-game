@@ -8,14 +8,10 @@ let controls = {
 };
 
 const gameWindow = document.getElementById('game');
-const title = document.createElement('h1'); title.textContent = "Baby's First JS Game";
-const subtitle = document.createElement('h3'); subtitle.textContent = "by Shiro Han";
-const header = document.createElement('h2'); header.textContent = "Instructions";
-const instructions = document.createElement('p');
-instructions.textContent = `
-Arrow Keys to Move. Hold A to Run.
-If your inputs do not work, click on the game.
-`
+const title = document.createElement('h1'); title.textContent = "Shiro's First JS Game";
+// const subtitle = document.createElement('h3'); subtitle.textContent = "by Shiro Han";
+const header = document.createElement('h2'); header.textContent = "Controls";
+
 const setTable = document.createElement('table');
 const setTableR1 = document.createElement('tr'); setTable.appendChild(setTableR1);
 const setTableH1 = document.createElement('th'); setTableH1.textContent = "Action"; setTableR1.appendChild(setTableH1);
@@ -37,10 +33,8 @@ const setTableRUNtext = document.createElement('td'); setTableRUNtext.textConten
 const setTableRUNbutton = document.createElement('button'); setTableRUNbutton.textContent = controls['run']; setTableR6.appendChild(setTableRUNbutton);
 
 gameWindow.insertAdjacentElement('beforebegin', title);
-gameWindow.insertAdjacentElement('beforebegin', subtitle);
 gameWindow.insertAdjacentElement('afterend', header);
-header.insertAdjacentElement('afterend', instructions);
-instructions.insertAdjacentElement('afterend', setTable);
+header.insertAdjacentElement('afterend', setTable);
 
 let dodger = document.getElementById("dodger");
 let dodgerWidth = dodger.scrollWidth;
@@ -104,6 +98,8 @@ function createMovement(myHash) {
 }
 
 gameWindow.addEventListener("keydown", function(e) {
+    e.preventDefault();
+
     controlsArray = Object.values(controls);
     controlsArray.forEach(control => {
         if (e.key === control) {inputs[e.key] = true;}
