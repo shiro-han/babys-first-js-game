@@ -4,7 +4,8 @@ const subtitle = document.createElement('h3'); subtitle.textContent = "by Shiro 
 const header = document.createElement('h2'); header.textContent = "Instructions";
 const instructions = document.createElement('p');
 instructions.textContent = `
-Click the game window for inputs to be registered. Arrow Keys to Move. Hold A to Run
+Arrow Keys to Move. Hold A to Run.
+If your inputs do not work, click on the game.
 `
 
 gameWindow.insertAdjacentElement('beforebegin', title);

@@ -3,7 +3,7 @@ Play Online Here: https://shiro-han.github.io/babys-first-js-game/
 
 ## To Do
 * √Refactor Code
-* Inputs only work when clicked in game
+* √Inputs only work when clicked in game
 * Interface for remap controls
 * Add Win Condition
 * Add enemies
