@@ -1,7 +1,13 @@
 # Baby's First JS Game
-Built off of Flatiron's Rock Dodger Lab
+
 
 ## To Do
-1. Add Win Condition
-2. Add enemies
-3. Instructions - maybe add b0xx control guide?
+* √Refactor Code
+* Inputs only work when clicked in game
+* Interface for remap controls
+* Add Win Condition
+* Add enemies
+* Instructions - maybe add b0xx control guide?
+* make movement/dash have an animation
+
+Built off of Flatiron's JavaScript Acting On Events Lab (Rock Dodger!)

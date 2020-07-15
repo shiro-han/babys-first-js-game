@@ -1,149 +1,82 @@
+const gameWindow = document.getElementById('game');
+
 let dodger = document.getElementById("dodger");
 let dodgerWidth = dodger.scrollWidth;
 let dodgerHeight = dodger.scrollHeight;
 dodger.style.bottom = "180px";
 dodger.style.backgroundColor = "#FF69B4";
 
-function moveDodger(direction, modInput=0){
+function moveDodger(direction, dash=false){
+    let movementValue; let leftNumbers; let left; let bottomNumbers; let bottom;
+    if (dash === false) {movementValue = 3}
+    else {movementValue = 6;}
     
-}
 
-function moveDodgerLeft(modInput) {
-    if (modInput === undefined){
-        modInput = 0;
-    }
-
-    let movementValue = 5 + modInput;
-    let leftNumbers = dodger.style.left.replace("px", "");
-    let left = parseInt(leftNumbers, 10);
+    switch (direction) {
+        case 'left':
+            leftNumbers = dodger.style.left.replace("px", "");
+            left = parseInt(leftNumbers, 10);
     
-    if (left > 0) {
-        dodger.style.left = `${left - movementValue}px`
-    }
-}
+            if (left > 0) {dodger.style.left = `${left - movementValue}px`}
+            break;
 
-function moveDodgerRight(modInput) {
-    if (modInput === undefined){
-        modInput = 0;
-    }
+        case 'right':
+            leftNumbers = dodger.style.left.replace("px", "");
+            left = parseInt(leftNumbers, 10);
+            
+            if (left < 400 - dodgerWidth) {dodger.style.left = `${left + movementValue}px`}
+            break;
 
-    let movementValue = 5 + modInput;
-    let leftNumbers = dodger.style.left.replace("px", "");
-    let left = parseInt(leftNumbers, 10);
-    
-    if (left < 400 - dodgerWidth) {
-        dodger.style.left = `${left + movementValue}px`
-    }
-}
+        case 'up':
+            bottomNumbers = dodger.style.bottom.replace("px", "");
+            bottom = parseInt(bottomNumbers, 10);
+            
+            if (bottom < 400 - dodgerHeight) {dodger.style.bottom = `${bottom + movementValue}px`}
+            break;
+        
+        case 'down':
+            bottomNumbers = dodger.style.bottom.replace("px", "");
+            bottom = parseInt(bottomNumbers, 10);
+            
+            if (bottom > 0) {dodger.style.bottom = `${bottom - movementValue}px`}
+            break;
 
-function moveDodgerDown(modInput) {
-    if (modInput === undefined){
-        modInput = 0;
-    }
-
-    let movementValue = 5 + modInput;
-    let bottomNumbers = dodger.style.bottom.replace("px", "");
-    let bottom = parseInt(bottomNumbers, 10);
-    
-    if (bottom > 0) {
-        dodger.style.bottom = `${bottom - movementValue}px`
+        default:
+            break;
     }
 }
 
-function moveDodgerUp(modInput) {
-    if (modInput === undefined){
-        modInput = 0;
-    }
+let inputs = {};
+let controls = {
+    left: 'ArrowLeft',
+    right: 'ArrowRight',
+    down: 'ArrowDown',
+    up: 'ArrowUp',
+    dash: 'a'
+};
 
-    let movementValue = 5 + modInput;
-    let bottomNumbers = dodger.style.bottom.replace("px", "");
-    let bottom = parseInt(bottomNumbers, 10);
-    
-    if (bottom < 400 - dodgerHeight) {
-        dodger.style.bottom = `${bottom + movementValue}px`
-    }
+function createMovement(myHash) {
+    let inputArray = Object.keys(myHash);
+    inputArray.forEach(input => {
+        if (input === controls['left']) {moveDodger('left')}
+        if (input === controls['right']) {moveDodger('right')}
+        if (input === controls['up']) {moveDodger('up')}
+        if (input === controls['down']) {moveDodger('down')}
+    })
 }
-
-let keysPressed = {};
-let movements = ['ArrowLeft', 'ArrowRight', 'ArrowDown', 'ArrowUp', 'a'];
-    
 
 document.addEventListener("keydown", function(e) {
-    
-    movements.forEach(movement => {
-        if (e.key === movement) {keysPressed[e.key] = true;}
+    controlsArray = Object.values(controls);
+    controlsArray.forEach(control => {
+        if (e.key === control) {inputs[e.key] = true;}
     })
+
+    createMovement(inputs)
     
-    dashValue = 20;
-
-    if (keysPressed['ArrowLeft'] && !keysPressed['ArrowRight'] && !keysPressed['ArrowUp'] && !keysPressed['ArrowDown']){
-        if (keysPressed['a']){
-            moveDodgerLeft(dashValue);
-        } else {
-            moveDodgerLeft();
-        }
-    }
-    
-    if (!keysPressed['ArrowLeft'] && keysPressed['ArrowRight'] && !keysPressed['ArrowUp'] && !keysPressed['ArrowDown']){
-        if (keysPressed['a']){
-            moveDodgerRight(dashValue);
-        } else {
-            moveDodgerRight();
-        }
-    }
-
-    if (!keysPressed['ArrowLeft'] && !keysPressed['ArrowRight'] && !keysPressed['ArrowUp'] && keysPressed['ArrowDown']){
-        if (keysPressed['a']){
-            moveDodgerDown(dashValue);
-        } else {
-            moveDodgerDown();
-        }
-    }
-
-    if (!keysPressed['ArrowLeft'] && !keysPressed['ArrowRight'] && keysPressed['ArrowUp'] && !keysPressed['ArrowDown']){
-        if (keysPressed['a']){
-            moveDodgerUp(dashValue);
-        } else {
-            moveDodgerUp();
-        }
-    }
-
-    if (keysPressed['ArrowLeft'] && keysPressed['ArrowUp']){
-        if (keysPressed['a']){
-            moveDodgerLeft(dashValue); moveDodgerUp(dashValue);
-        } else {
-            moveDodgerLeft(); moveDodgerUp();
-        }
-    }
-
-    if (keysPressed['ArrowLeft'] && keysPressed['ArrowDown']){
-        if (keysPressed['a']){
-            moveDodgerLeft(dashValue); moveDodgerDown(dashValue);
-        } else {
-            moveDodgerLeft(); moveDodgerDown();
-        }
-    }
-
-    if (keysPressed['ArrowRight'] && keysPressed['ArrowUp']){
-        if (keysPressed['a']){
-            moveDodgerRight(dashValue); moveDodgerUp(dashValue);
-        } else {
-            moveDodgerRight(); moveDodgerUp();
-        }
-    }
-
-    if (keysPressed['ArrowRight'] && keysPressed['ArrowDown']){
-        if (keysPressed['a']){
-            moveDodgerRight(dashValue); moveDodgerDown(dashValue);
-        } else {
-            moveDodgerRight(); moveDodgerDown();
-        }
-    }
-
 });
 
 document.addEventListener('keyup', (event) => {
-    delete keysPressed[event.key];
+    delete inputs[event.key];
 });
 
 document.addEventListener("keydown", function(e) {
