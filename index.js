@@ -2,7 +2,10 @@ const gameWindow = document.getElementById('game');
 const title = document.createElement('h1'); title.textContent = "Baby's First JS Game";
 const subtitle = document.createElement('h3'); subtitle.textContent = "by Shiro Han";
 const header = document.createElement('h2'); header.textContent = "Instructions";
-const instructions = document.createElement('p'); instructions.textContent = "Arrow Keys to Move. Hold A to Run"
+const instructions = document.createElement('p');
+instructions.textContent = `
+Click the game window for inputs to be registered. Arrow Keys to Move. Hold A to Run
+`
 
 gameWindow.insertAdjacentElement('beforebegin', title);
 gameWindow.insertAdjacentElement('beforebegin', subtitle);
@@ -79,7 +82,7 @@ function createMovement(myHash) {
     })
 }
 
-document.addEventListener("keydown", function(e) {
+gameWindow.addEventListener("keydown", function(e) {
     controlsArray = Object.values(controls);
     controlsArray.forEach(control => {
         if (e.key === control) {inputs[e.key] = true;}
