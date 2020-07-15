@@ -1,10 +1,21 @@
 const gameWindow = document.getElementById('game');
+const title = document.createElement('h1'); title.textContent = "Baby's First JS Game";
+const subtitle = document.createElement('h3'); subtitle.textContent = "by Shiro Han";
+const header = document.createElement('h2'); header.textContent = "Instructions";
+const instructions = document.createElement('p'); instructions.textContent = "Arrow Keys to Move. Hold A to Run"
+
+gameWindow.insertAdjacentElement('beforebegin', title);
+gameWindow.insertAdjacentElement('beforebegin', subtitle);
+gameWindow.insertAdjacentElement('afterend', header);
+header.insertAdjacentElement('afterend', instructions);
 
 let dodger = document.getElementById("dodger");
 let dodgerWidth = dodger.scrollWidth;
 let dodgerHeight = dodger.scrollHeight;
 dodger.style.bottom = "180px";
 dodger.style.backgroundColor = "#FF69B4";
+
+
 
 function moveDodger(direction, run=false){
     let movementValue; let leftNumbers; let left; let bottomNumbers; let bottom;
