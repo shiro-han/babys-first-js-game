@@ -22,8 +22,8 @@ dodger.style.backgroundColor = "#FF7F50";
 
 function moveDodger(direction, run=false){
     let movementValue; let leftNumbers; let left; let bottomNumbers; let bottom;
-    if (run === false) {movementValue = 3}
-    else {movementValue = 6;}
+    if (run === false) {movementValue = 5}
+    else {movementValue = 10;}
     
 
     switch (direction) {
@@ -79,10 +79,12 @@ document.addEventListener("click", function(e){
         control = selectedButton.parentNode.firstChild.innerText.toLowerCase();
         selectedButton.innerText = 'Rebinding Key...'
         selectedButton.addEventListener("keydown", function(e){
-            // debugger;
+            e.preventDefault();
             controls[control] = e.key;
             selectedButton.innerText = e.key;
+            if (e.keyCode === 32){selectedButton.innerText = "Spacebar"}
         })
+        
     }
 })
 
@@ -98,8 +100,8 @@ gameWindow.addEventListener("keydown", function(e) {
     
 });
 
-document.addEventListener('keyup', (event) => {
-    delete inputs[event.key];
+document.addEventListener('keyup', (e) => {
+    delete inputs[e.key];
 });
 
 gameWindow.addEventListener("keydown", function(e) {
