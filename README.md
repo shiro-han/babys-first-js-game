@@ -5,7 +5,10 @@ Play Online Here: https://shiro-han.github.io/babys-first-js-game/
 * √Refactor Code
 * √Inputs only work when clicked in game
 * √Interface for remap controls
-* Functional control remap
+* √Functional control remap
+* Pause game when clicked out
+* Start screen
+* Death screen
 * Add abilities
 * Add Win Condition
 * Add enemies
