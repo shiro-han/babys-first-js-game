@@ -6,6 +6,7 @@ Play Online Here: https://shiro-han.github.io/babys-first-js-game/
 * √Inputs only work when clicked in game
 * √Interface for remap controls
 * √Functional control remap
+* allow all keys to be rebound
 * Pause game when clicked out
 * Start screen
 * Death screen
