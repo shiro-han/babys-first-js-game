@@ -6,6 +6,7 @@ let controls = {
     up: 'ArrowUp',
     run: 'a'
 };
+let gameStarted = false;
 
 const gameWindow = document.getElementById('game');
 
@@ -73,6 +74,21 @@ function createMovement(myHash) {
     })
 }
 
+let pauseGame = () => {
+    gameWindow.style.backgroundColor = 'blue';
+    dodger.style.backgroundColor = 'blue';
+    let pauseText = document.createElement('h1')
+    pauseText.innerText = 'PAUSED -- CLICK TO RESUME'
+    gameWindow.appendChild(pauseText);
+}
+
+let resumeGame = () => {
+    gameWindow.style.backgroundColor = '#111';
+    dodger.style.backgroundColor = "#FF7F50";
+    let pauseText = gameWindow.querySelector('h1')
+    gameWindow.removeChild(pauseText)
+}
+
 document.addEventListener("click", function(e){
     if (e.target.matches('button')){
         selectedButton = e.target;
@@ -104,6 +120,15 @@ document.addEventListener('keyup', (e) => {
     delete inputs[e.key];
 });
 
-gameWindow.addEventListener("keydown", function(e) {
-    console.log(e.key);
-});
+gameWindow.addEventListener('focusin', (e) => {
+    resumeGame()
+})
+
+gameWindow.addEventListener('focusout', (e) => {
+    pauseGame()
+})
+
+
+// gameWindow.addEventListener("keydown", function(e) {
+//     console.log(e.key);
+// });
